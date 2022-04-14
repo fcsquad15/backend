@@ -95,12 +95,10 @@ const listarHabilidadesUsuario = async (req, res) => {
     return res.status(200).json()
 }
 
-//FAZER (tabela area colunas id, area
-//  tabela areausuarios colunas id, usuario_id, area_is )
 const addAreaUsuario = async (req, res) => {
-    const { id: usuario_id } = req.usuario // para usar com Autenticaçaõ
-    const { area_id } = req.body;
-    // const { usuario_id, area_id } = req.body;
+    // const { id: usuario_id } = req.usuario // para usar com Autenticaçaõ
+    // const { area_id } = req.body;
+    const { usuario_id, area_id } = req.body;
 
     if (!usuario_id || !area_id) {
         return res.status(404).json({ "mensagem": 'Dados obrigatórios não informados.' })
