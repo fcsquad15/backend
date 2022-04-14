@@ -219,11 +219,17 @@ const atualizarUsuario = async (req, res) => {
     const { nome, email, senha, bio, avatar } = req.body;
 
     try {
+        const verificarEmail = await conexao.query('SELECT * FROM usuarios WHERE email=$1 AND id!=$2', [email, id]);
+
+        if (verificarEmail.rowCount > 0) {
+            return res.status(400).json({ 'mensagem': 'Esse email já está cadastrado' })
+        };
+
         const localizarUsuário = await conexao.query('SELECT * FROM usuarios WHERE id = $1', [id]);
 
         if (localizarUsuário.rowCount === 0) {
             return res.status(400).json({ 'mensagem': 'Não foi possível encontrar o usuário' })
-        }
+        };
 
         const novaSenha = (senha ?
             await bcrypt.hash(String(senha), 10) :
@@ -239,11 +245,12 @@ const atualizarUsuario = async (req, res) => {
 
         if (resposta.rowCount === 0) {
             return res.status(400).json({ "mensagem": 'Não foi possível atualizar o usuário' })
-        }
+        };
 
-        res.status(200).json({ 'mensagem': 'Usuário atualizado com sucesso' })
+        res.status(200).json({ 'mensagem': 'Usuário atualizado com sucesso' });
     } catch (error) {
-        return res.status(400).json(error)
+        console.log(error)
+        return res.status(400).json(error);
     }
 }
 

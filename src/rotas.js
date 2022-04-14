@@ -39,7 +39,8 @@ rotas.get('/usuarios/areas/:id', usuarios.listarAreaUsuario);
 
 //rotas para notificações
 rotas.get('/notificacoes', notificacao.listarNotificacoes);
-rotas.post('/notificacoes', notificacao.visualizarTodasNotificacoes);// FAZER
+rotas.get('/notificacoes/quantidade', notificacao.contarNotificacoes);
+rotas.post('/notificacoes', notificacao.visualizarTodasNotificacoes);
 
 
 // rotas para o forum
