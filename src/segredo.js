@@ -1,0 +1,1 @@
+module.exports = 'senhaApiSquad15'
