@@ -9,6 +9,12 @@ const cadastrarHabilidade = async (req, res) => {
     }
 
     try {
+        const habilidadeExistente = await conexao.query('SELECT * FROM habilidades WHERE habilidade=$1', [habilidade]);
+
+        if (habilidadeExistente.rowCount > 0) {
+            return res.status(400).json({ 'mensagem': 'Habilidade já cadastrada' })
+        }
+
         const novaHabilidade = await conexao.query('INSERT INTO habilidades (habilidade) VALUES ( $1 )', [habilidade]);
 
         if (novaHabilidade.rowCount === 0) {
