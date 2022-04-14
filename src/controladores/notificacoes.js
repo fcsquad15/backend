@@ -66,7 +66,6 @@ const visualizarTodasNotificacoes = async (req, res) => {
     }
 }
 
-
 module.exports = {
     listarNotificacoes, visualizarTodasNotificacoes, contarNotificacoes
 }

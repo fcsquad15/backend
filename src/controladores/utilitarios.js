@@ -1,6 +1,5 @@
 const conexao = require('../conexao')
 
-//TESTADO E RODANDO
 const cadastrarHabilidade = async (req, res) => {
     const { habilidade } = req.body;
 
@@ -27,7 +26,6 @@ const cadastrarHabilidade = async (req, res) => {
     }
 }
 
-//TESTADO E RODANDO
 const listarHabilidade = async (req, res) => {
     try {
         const habilidades = await conexao.query('SELECT * FROM habilidades ORDER BY habilidade');
@@ -42,7 +40,6 @@ const listarHabilidade = async (req, res) => {
     }
 }
 
-//TESTADO E RODANDO
 const cadastrarHorario = async (req, res) => {
     const { hora } = req.body;
 
@@ -69,7 +66,6 @@ const cadastrarHorario = async (req, res) => {
     }
 }
 
-//TESTADO E RODANDO
 const listarHorario = async (req, res) => {
     try {
         const horarios = await conexao.query('SELECT * FROM horarios ORDER BY hora');
@@ -84,7 +80,6 @@ const listarHorario = async (req, res) => {
     }
 }
 
-//FAZER - MAIOR PRIORIDADE
 const listarAreas = async (req, res) => {
     try {
         const areas = await conexao.query('SELECT * FROM area ORDER BY area');
@@ -99,7 +94,6 @@ const listarAreas = async (req, res) => {
     }
 }
 
-//FAZER
 const cadastrarAreas = async (req, res) => {
     const { area } = req.body;
 
