@@ -222,7 +222,7 @@ const atualizarUsuario = async (req, res) => {
         const localizarUsuário = await conexao.query('SELECT * FROM usuarios WHERE id = $1', [id]);
 
         if (localizarUsuário.rowCount === 0) {
-            return res.status(400).json('Não foi possível encontrar o usuário')
+            return res.status(400).json({ 'mensagem': 'Não foi possível encontrar o usuário' })
         }
 
         const novaSenha = (senha ?
@@ -249,9 +249,9 @@ const atualizarUsuario = async (req, res) => {
 
 const deletarUsuario = async (req, res) => {
     // Para usar com autenticação
-    const { id } = req.usuario;
+    // const { id } = req.usuario;
 
-    // const { id } = req.params;
+    const { id } = req.params;
     try {
         const usuario = await conexao.query('DELETE FROM usuarios WHERE id = $1', [id]);
 
