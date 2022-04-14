@@ -18,7 +18,6 @@ const criarPergunta = async (req, res) => {
 
         const mensagem = "Pergunta criada com sucesso."
 
-
         const novaNotificacao = await conexao.query('INSERT INTO notificacao (usuario_id,mensagem) VALUES ($1,$2)', [usuario_id, mensagem])
 
         if (novaNotificacao.rowCount === 0) {
@@ -77,7 +76,7 @@ const comentarPergunta = async (req, res) => {
 const listarPerguntas = async (req, res) => {
 
     try {
-        const perguntas = await conexao.query('SELECT * FROM postagem');
+        const perguntas = await conexao.query('SELECT * FROM postagem ORDER BY hora_postagem DESC');
 
         if (perguntas.rowCount === 0) {
             return res.status(400).json({ "mensagem": 'Não foi possível encontrar perguntas' })
@@ -93,7 +92,7 @@ const listarPerguntasFiltroHabilidade = async (req, res) => {
     const { habilidade_id } = req.body
 
     try {
-        const perguntas = await conexao.query('SELECT * FROM postagem WHERE habilidade_id=$1', [habilidade_id]);
+        const perguntas = await conexao.query('SELECT * FROM postagem WHERE habilidade_id=$1 ORDER BY hora_postagem DESC', [habilidade_id]);
 
         if (perguntas.rowCount === 0) {
             return res.status(400).json({ "mensagem": 'Não foi possível encontrar perguntas' })
@@ -109,7 +108,7 @@ const listarComentarios = async (req, res) => {
     let { postagem_id } = req.params;
 
     try {
-        const comentarios = await conexao.query('SELECT * FROM comentarios WHERE postagem_id = $1', [postagem_id]);
+        const comentarios = await conexao.query('SELECT * FROM comentarios WHERE postagem_id = $1 ORDER BY hora_postagem DESC', [postagem_id]);
 
         if (comentarios.rowCount === 0) {
             return res.status(400).json({ "mensagem": 'Não foi possível encontrar comentarios' })
