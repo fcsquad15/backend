@@ -76,7 +76,7 @@ const comentarPergunta = async (req, res) => {
 const listarPerguntas = async (req, res) => {
 
     try {
-        const perguntas = await conexao.query('SELECT * FROM postagem ORDER BY hora_postagem DESC');
+        const perguntas = await conexao.query('SELECT postagem.id,postagem.pergunta, usuarios.avatar, usuarios.nome, habilidades.habilidade FROM postagem LEFT JOIN usuarios  ON postagem.usuario_id=usuarios.id LEFT JOIN habilidades ON habilidades.id = postagem.habilidade_id ORDER BY postagem.hora_postagem DESC');
 
         if (perguntas.rowCount === 0) {
             return res.status(400).json({ "mensagem": 'Não foi possível encontrar perguntas' })
