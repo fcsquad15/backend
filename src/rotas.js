@@ -38,7 +38,7 @@ rotas.post('/usuarios/areas', usuarios.addAreaUsuario);
 rotas.get('/usuarios/areas/:id', usuarios.listarAreaUsuario);
 
 //rotas para notificações
-rotas.get('/notificacoes', notificacao.listarNotificacoes);
+rotas.get('/notificacoes/:id', notificacao.listarNotificacoes);
 rotas.get('/notificacoes/quantidade/:id', notificacao.contarNotificacoes);
 rotas.post('/notificacoes', notificacao.visualizarTodasNotificacoes);
 
