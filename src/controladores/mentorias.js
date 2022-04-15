@@ -143,7 +143,7 @@ const listarDiasEHora = async (req, res) => {
 
 const listarHorarios = async (req, res) => {
     const { mentor } = req.query
-    const { dia } = req.body
+    const { dia } = req.params
 
     if (!mentor || !dia) {
         return res.status(404).json({ "mensagem": 'É necessário informar o id do mentor e o dia' })

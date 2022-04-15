@@ -39,7 +39,7 @@ rotas.get('/usuarios/areas/:id', usuarios.listarAreaUsuario);
 
 //rotas para notificações
 rotas.get('/notificacoes', notificacao.listarNotificacoes);
-rotas.get('/notificacoes/quantidade', notificacao.contarNotificacoes);
+rotas.get('/notificacoes/quantidade/:id', notificacao.contarNotificacoes);
 rotas.post('/notificacoes', notificacao.visualizarTodasNotificacoes);
 
 
@@ -56,7 +56,7 @@ rotas.get('/mentorias/filtroHab', mentorias.filtrarMentorTema); // id da habilid
 rotas.get('/mentorias/filtroArea', mentorias.filtrarMentorArea); //id da área vai por req.query
 rotas.get('/mentor', mentorias.listarDias);
 rotas.get('/mentor/dias', mentorias.listarDiasEHora);
-rotas.get('/mentor/horarios', mentorias.listarHorarios);
+rotas.get('/mentor/horarios/:hora', mentorias.listarHorarios);
 rotas.post('/usuarios/mentorias', mentorias.disponibilizarHorario);
 rotas.post('/mentorias/marcar', mentorias.marcarMentoria)
 rotas.get('/mentorias/marcadas/:usuario_id', mentorias.listarMentoriasMarcadas)

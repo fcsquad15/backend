@@ -24,7 +24,7 @@ const listarNotificacoes = async (req, res) => {
 
 const contarNotificacoes = async (req, res) => {
     // const { id } = req.usuario // para usar com Autenticaçaõ
-    const { id } = req.body
+    const { id } = req.params
 
 
     if (!id) {
