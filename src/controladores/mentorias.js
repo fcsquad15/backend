@@ -231,7 +231,7 @@ const marcarMentoria = async (req, res) => {
 const listarMentoriasMarcadas = async (req, res) => {
     // para usar com Autenticação
     // const { id: usuario_id } = req.usuario
-    const { usuario_id } = req.body
+    const { usuario_id } = req.params
 
     if (!usuario_id) {
         return res.status(400).json({ 'mensagem': 'Usuário não informado' })

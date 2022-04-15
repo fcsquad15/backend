@@ -59,6 +59,6 @@ rotas.get('/mentor/dias', mentorias.listarDiasEHora);
 rotas.get('/mentor/horarios', mentorias.listarHorarios);
 rotas.post('/usuarios/mentorias', mentorias.disponibilizarHorario);
 rotas.post('/mentorias/marcar', mentorias.marcarMentoria)
-rotas.get('/mentorias/marcadas', mentorias.listarMentoriasMarcadas)
+rotas.get('/mentorias/marcadas/:usuario_id', mentorias.listarMentoriasMarcadas)
 
 module.exports = rotas
