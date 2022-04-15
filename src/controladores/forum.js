@@ -89,7 +89,7 @@ const listarPerguntas = async (req, res) => {
 }
 
 const listarPerguntasFiltroHabilidade = async (req, res) => {
-    const { habilidade_id } = req.body
+    const { habilidade_id } = req.params
 
     try {
         const perguntas = await conexao.query('SELECT postagem.id,postagem.pergunta, usuarios.avatar, usuarios.nome, habilidades.habilidade,postagem.hora_postagem FROM postagem LEFT JOIN usuarios  ON postagem.usuario_id=usuarios.id LEFT JOIN habilidades ON habilidades.id = postagem.habilidade_id WHERE postagem.habilidade_id=$1 ORDER BY postagem.hora_postagem DESC', [habilidade_id]);

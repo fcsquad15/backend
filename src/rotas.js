@@ -45,7 +45,7 @@ rotas.post('/notificacoes', notificacao.visualizarTodasNotificacoes);
 
 // rotas para o forum
 rotas.get('/forum', forum.listarPerguntas);
-rotas.get('/forum/filtro', forum.listarPerguntasFiltroHabilidade);
+rotas.get('/forum/filtro/:habilidade_id', forum.listarPerguntasFiltroHabilidade);
 rotas.get('/forum/:postagem_id', forum.listarComentarios); // id da postagem
 rotas.post('/forum/', forum.criarPergunta);
 rotas.post('/forum/:postagem_id', forum.comentarPergunta); // id da postagem
